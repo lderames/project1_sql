@@ -141,7 +141,7 @@ FROM job_postings_fact AS job_posting
             ON skills_in_job.skill_id = skills.skill_id 
 WHERE
      job_title_short = 'Data Analyst' AND
-     job_work_from_home = TRUE
+     job_location = 'Anywhere'
 GROUP BY
     skills.skills
 ORDER BY
@@ -168,6 +168,31 @@ LIMIT 5
 ---
 Exploring the average salaries associated with different skills revealed which skills are the highest paying.
 
+```sql
+
+SELECT
+    skills.skills,
+    ROUND(AVG(salary_year_avg),0) AS avg_salary
+FROM 
+    job_postings_fact AS job_posting
+
+INNER JOIN skills_job_dim AS skills_in_job
+    ON skills_in_job.job_id = job_posting.job_id
+INNER JOIN skills_dim AS skills
+    ON skills.skill_id = skills_in_job.skill_id
+
+WHERE
+    job_title_short = 'Data Analyst' AND
+    job_location = 'Anywhere' AND
+    salary_year_avg IS NOT NULL
+GROUP BY 
+    skills.skills
+ORDER BY
+    avg_salary DESC 
+    LIMIT 25
+
+```
+
 The breakdown shows the results for the top paying skills for Data Analysts:
 
 - **High Demand for  Big Data & ML Skills:** Top salaries are commanded by analyst skilled in big data technologies (PySpark, Couchbase), machine learning tools (DataRobot, Jupyter), and Python libraries (Pandas, NumPy), reflecting the industry's high
@@ -176,4 +201,32 @@ valuation of data processing and predictive modeling capabilities.
 - **Software Development & Deployment Profeciency:** Knowledge in development and deployment tools (GitLab, Kurbenetes, Airflow) indicates a lucrative crossover between data analysis and engineering, with a premium on skills that facilitate automation
 and efficient data pipeline management.
  
+
+|   Skills     | Avg Salary    |
+|--------------|---------------|
+|   Pyspark    | 20,8172       |
+|   Bitbucket  | 18,9155       |
+|   Couchbase  | 16,0515       |
+|   Watson     | 16,0515       |
+|   Datarobot  | 15,5486       |
+|   Gitlab     | 15,4500       |
+|   Swift      | 15,3750       |
+|   Jupyter    | 15,2777       |
+|   Pandas     | 15,1821       |
+| Elasticseach | 14,5000       |
+|   Golang     | 14,5000       |      
+|   Numpy      | 14,3513       |
+|   Databricks | 14,1907       |
+|   Linux      | 13,6508       |
+| Kumbernetes  | 13,2500       |
+|   Atlassian  | 13,1162       |
+|   Twilio     | 12,7000       |
+|   Airflow    | 12,6103       |
+| Scikit_learn | 12,5781       |
+|   Jenkins    | 12,5436       |
+|   Notion     | 12,5000       |
+|   Scala      | 12,4903       |
+|  Postgresql  | 12,3879       |
+|    Gcp       | 12,2500       |
+| Micorstrategy| 12,1619       |
 
