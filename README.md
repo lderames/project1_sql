@@ -70,7 +70,7 @@ Companies like SmartAsset, Meta, and AT&T are among those offering high salaries
 -**Job Title Variety:**
 There's a high diversity in job titles, from Data Analyst to Director of Analystics, reflectin varied roles and specialization within data anlytics.
 
----
+
 ### Required Skills
 ---
 
@@ -120,4 +120,60 @@ ORDER BY
 
 This combination of technical skills plays a crucial role in securing top-tier roles in data analytics.  
 
+
+
+ ### High Demand Skills
+
 ---
+This query helped indetify the skills most frequently requeseted in job postings, directing focus to areas with high demand
+
+```sql
+SELECT
+    skills.skills,
+    COUNT(skills_in_job.job_id) AS demand_count
+
+FROM job_postings_fact AS job_posting
+    INNER JOIN
+   skills_job_dim AS skills_in_job
+            ON job_posting.job_id = skills_in_job.job_id
+    INNER JOIN
+        skills_dim AS skills 
+            ON skills_in_job.skill_id = skills.skill_id 
+WHERE
+     job_title_short = 'Data Analyst' AND
+     job_work_from_home = TRUE
+GROUP BY
+    skills.skills
+ORDER BY
+    demand_count DESC
+LIMIT 5
+
+```
+- **SQL and Excel** remains fundamental, emphasizing the need for strong foundational skills in data processing and spreadsheet manipulation.
+
+- **Programming and Visualization Tools** like **Python, Tableau, and Power BI**  are essential, pointing towards the increasing importance of technical skills in data storytelling and decision support.
+
+|   Skills     | Demand Count  |
+|--------------|---------------|
+|    SQL       | 7291          |
+|   Excel      | 4611          |
+|   Python     | 4330          |
+| Tabluea      | 3745          |
+| Power BI     | 2609          |
+
+*Table of the demand for the top 5 skills in data analyst job postings*
+
+### Salary Boosting Skills
+
+---
+Exploring the average salaries associated with different skills revealed which skills are the highest paying.
+
+The breakdown shows the results for the top paying skills for Data Analysts:
+
+- **High Demand for  Big Data & ML Skills:** Top salaries are commanded by analyst skilled in big data technologies (PySpark, Couchbase), machine learning tools (DataRobot, Jupyter), and Python libraries (Pandas, NumPy), reflecting the industry's high
+valuation of data processing and predictive modeling capabilities.
+
+- **Software Development & Deployment Profeciency:** Knowledge in development and deployment tools (GitLab, Kurbenetes, Airflow) indicates a lucrative crossover between data analysis and engineering, with a premium on skills that facilitate automation
+and efficient data pipeline management.
+ 
+
