@@ -28,13 +28,12 @@ For my in-depth analysis of the data analyst job market, I leveraged several pow
 
 # The Analysis
 
-Each query for this project aimed at investigating specific aspects of the data analyst job market.
-Here's how I approached each question:
+Each query for this project aimed at investigating specific aspects of the data analyst job market. Here's how I approached each question:
 
 ### Top Paying Roles
 ---
-To identify the highest-paying roles, I filtered data analyst position by average yearly salary
-and location, focusing on remote jobs. This query higlights the high opportunities in the field.
+_To identify the highest-paying roles, I filtered data analyst position by average yearly salary
+and location, focusing on remote jobs. This query higlights the high opportunities in the field._
 
 ```sql
 SELECT 
@@ -81,8 +80,8 @@ There's a high diversity in job titles, from Data Analyst to Director of Analyst
 ### Required Skills
 ---
 
-To determine the essential skills required to secure a high-paying job as a Data Analyst, I filtered skills based on their average yearly salary. 
-This analysis highlights the skills associated with the highest earnings, providing valuable insights for career growth.
+_To determine the essential skills required to secure a high-paying job as a Data Analyst, I filtered skills based on their average yearly salary. 
+This analysis highlights the skills associated with the highest earnings, providing valuable insights for career growth._
 
 ```sql
 WITH top_paying_job AS (
@@ -132,7 +131,7 @@ This combination of technical skills plays a crucial role in securing top-tier r
  ### High Demand Skills
 
 ---
-This query helped indetify the skills most frequently requeseted in job postings, directing focus to areas with high demand
+_This query helped indetify the skills most frequently requeseted in job postings, directing focus to areas with high demand._
 
 ```sql
 SELECT
@@ -173,7 +172,7 @@ LIMIT 5
 ### Salary Boosting Skills
 
 ---
-Exploring the average salaries associated with different skills revealed which skills are the highest paying.
+_Exploring the average salaries associated with different skills revealed which skills are the highest paying._
 
 ```sql
 
@@ -196,7 +195,7 @@ GROUP BY
     skills.skills
 ORDER BY
     avg_salary DESC 
-    LIMIT 20
+    LIMIT 10
 
 ```
 
@@ -207,6 +206,8 @@ valuation of data processing and predictive modeling capabilities.
 
 - **Software Development & Deployment Profeciency:** Knowledge in development and deployment tools (GitLab, Kurbenetes, Airflow) indicates a lucrative crossover between data analysis and engineering, with a premium on skills that facilitate automation
 and efficient data pipeline management.
+
+-**Cloud Computing Experties:** Familiarity with cloud and data engineering tools (Elasticsearch, Databricks, GCP) underscores the growing importance of cloud-based environments, suggesting that cloud proficiency boosts earning potential in data analytics.
  
 
 |   Skills     | Avg Salary    |
@@ -221,13 +222,15 @@ and efficient data pipeline management.
 |   Jupyter    | 15,2777       |
 |   Pandas     | 15,1821       |
 | Elasticseach | 14,5000       |
-|   Golang     | 14,5000       |      
-|   Numpy      | 14,3513       |
-|   Databricks | 14,1907       |
-|   Linux      | 13,6508       |
-| Kumbernetes  | 13,2500       |
-|   Atlassian  | 13,1162       |
-|   Twilio     | 12,7000       |
-|   Airflow    | 12,6103       |
-| Scikit_learn | 12,5781       |
+
+*Tables of the average salary for the top 10 paying skills for data analysts*
+
+### Optimal Learning Path 
+---
+
+_By integrating insights from both demand and salary data, this query seeks to identify high-value skills — those that are not only in demand but also command competitive salaries. The goal is to provide a strategic foundation for skill development and career growth._
+
+
+
+
 
