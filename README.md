@@ -77,7 +77,7 @@ Top 10 paying data analyst roles span from $184,000 to $650,000,
 indicating significant salary  potential in the field.
 
 -**Diverse Employers:**
-Companies like SmartAsset, Meta, and AT&T are among those offering high salaries, showig a broad interest across different industries.
+Companies like Mantys, Meta, and AT&T are among those offering high salaries, showing a broad interest across different industries.
 
 -**Job Title Variety:**
 There's a high diversity in job titles, from Data Analyst to Director of Analystics, reflecting varied roles and specialization within data analytics.
