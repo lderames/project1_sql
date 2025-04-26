@@ -3,7 +3,6 @@
  
 This project provides a comprehensive analysis of the data job market, with a particular focus on data analyst roles. It examines top-paying positions, the most in-demand skills, and the intersection where high demand meets competitive salaries in the field of data analytics.
 
-For the SQL queries, please click the link: (https://github.com/lderames/project1_sql/tree/main/project1_sql)
 
 # Background 
 
@@ -58,17 +57,30 @@ WHERE
 ORDER BY
     salary_year_avg DESC
 ```
+| Job Title                             | Company Name                | Salary (USD) |
+|---------------------------------------|-----------------------------|--------------|
+| Data Analyst                          |Mantys                       | 650,000      |
+| Director of Analytics                 |Meta                         | 336,500      |
+| Associate Director - Data Insights    | AT&T                        | 255,829      |
+| Data Analyst, Marketing               |Pinterest Job Advertissements| 232,423      |
+| Data Analyst (Hybrid/Remote)          |Uclahealthcareers            | 217,000      |
+| Principal Data Analyst (Remote)       |SmartAsset                   | 205,000      |
+| Director, Data Analyst - HYBRID       |Inclusively                  | 189,309      |
+| Principal Data Analyst, AV Performance|Motional                     | 189,000      |
+| Principal Data Analyst                |SmartAsset                   | 186,000      |
+| ERM Data Analyst                      |Get It Recruit               | 184,000      |
+
 Here's the breakdown of the top data analyst jobs in 2023:
 
 -**Wide Salary Range:** 
-Top 10 paying data analyst roles span from $184,000 to $65,000,
+Top 10 paying data analyst roles span from $184,000 to $650,000,
 indicating significant salary  potential in the field.
 
 -**Diverse Employers:**
 Companies like SmartAsset, Meta, and AT&T are among those offering high salaries, showig a broad interest across different industries.
 
 -**Job Title Variety:**
-There's a high diversity in job titles, from Data Analyst to Director of Analystics, reflectin varied roles and specialization within data anlytics.
+There's a high diversity in job titles, from Data Analyst to Director of Analystics, reflecting varied roles and specialization within data analytics.
 
 
 ### Required Skills
@@ -189,7 +201,7 @@ GROUP BY
     skills.skills
 ORDER BY
     avg_salary DESC 
-    LIMIT 25
+    LIMIT 20
 
 ```
 
@@ -223,10 +235,4 @@ and efficient data pipeline management.
 |   Twilio     | 12,7000       |
 |   Airflow    | 12,6103       |
 | Scikit_learn | 12,5781       |
-|   Jenkins    | 12,5436       |
-|   Notion     | 12,5000       |
-|   Scala      | 12,4903       |
-|  Postgresql  | 12,3879       |
-|    Gcp       | 12,2500       |
-| Micorstrategy| 12,1619       |
 
