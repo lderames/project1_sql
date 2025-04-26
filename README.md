@@ -38,14 +38,9 @@ and location, focusing on remote jobs. This query higlights the high opportuniti
 
 ```sql
 SELECT 
-    job_id,
     job_title,
-     name AS company_name,
-    job_location,
-    job_schedule_type,
-    salary_year_avg,
-    job_posted_date
-
+    name AS company_name,
+    salary_year_avg
 FROM 
     job_postings_fact
 LEFT JOIN company_dim
