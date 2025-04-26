@@ -30,7 +30,11 @@ For my in-depth analysis of the data analyst job market, I leveraged several pow
 
 Each query for this project aimed at investigating specific aspects of the data analyst job market. Here's how I approached each question:
 
+
+---
+
 ### Top Paying Roles
+
 ---
 _To identify the highest-paying roles, I filtered data analyst position by average yearly salary
 and location, focusing on remote jobs. This query higlights the high opportunities in the field._
@@ -51,18 +55,6 @@ WHERE
 ORDER BY
     salary_year_avg DESC
 ```
-| Job Title                             | Company Name                | Salary (USD) |
-|---------------------------------------|-----------------------------|--------------|
-| Data Analyst                          |Mantys                       | 650,000      |
-| Director of Analytics                 |Meta                         | 336,500      |
-| Associate Director - Data Insights    | AT&T                        | 255,829      |
-| Data Analyst, Marketing               |Pinterest Job Advertissements| 232,423      |
-| Data Analyst (Hybrid/Remote)          |Uclahealthcareers            | 217,000      |
-| Principal Data Analyst (Remote)       |SmartAsset                   | 205,000      |
-| Director, Data Analyst - HYBRID       |Inclusively                  | 189,309      |
-| Principal Data Analyst, AV Performance|Motional                     | 189,000      |
-| Principal Data Analyst                |SmartAsset                   | 186,000      |
-| ERM Data Analyst                      |Get It Recruit               | 184,000      |
 
 Here's the breakdown of the top data analyst jobs in 2023:
 
@@ -77,7 +69,25 @@ Companies like Mantys, Meta, and AT&T are among those offering high salaries, sh
 There's a high diversity in job titles, from Data Analyst to Director of Analystics, reflecting varied roles and specialization within data analytics.
 
 
+| Job Title                             | Company Name                | Salary (USD)  |
+|---------------------------------------|-----------------------------|---------------|
+| Data Analyst                          |Mantys                       | $650,000      |
+| Director of Analytics                 |Meta                         | $336,500      |
+| Associate Director - Data Insights    | AT&T                        | $255,829      |
+| Data Analyst, Marketing               |Pinterest Job Advertissements| $232,423      |
+| Data Analyst (Hybrid/Remote)          |Uclahealthcareers            | $217,000      |
+| Principal Data Analyst (Remote)       |SmartAsset                   | $205,000      |
+| Director, Data Analyst - HYBRID       |Inclusively                  | $189,309      |
+| Principal Data Analyst, AV Performance|Motional                     | $189,000      |
+| Principal Data Analyst                |SmartAsset                   | $186,000      |
+| ERM Data Analyst                      |Get It Recruit               | $184,000      |
+
+*Table of the companies and data analyst roles that gives the highest salary.*
+
+---
+
 ### Required Skills
+
 ---
 
 _To determine the essential skills required to secure a high-paying job as a Data Analyst, I filtered skills based on their average yearly salary. 
@@ -126,7 +136,7 @@ ORDER BY
 
 This combination of technical skills plays a crucial role in securing top-tier roles in data analytics.  
 
-
+---
 
  ### High Demand Skills
 
@@ -155,6 +165,7 @@ ORDER BY
 LIMIT 5
 
 ```
+
 - **SQL and Excel** remains fundamental, emphasizing the need for strong foundational skills in data processing and spreadsheet manipulation.
 
 - **Programming and Visualization Tools** like **Python, Tableau, and Power BI**  are essential, pointing towards the increasing importance of technical skills in data storytelling and decision support.
@@ -167,7 +178,9 @@ LIMIT 5
 | Tabluea      | 3745          |
 | Power BI     | 2609          |
 
-*Table of the demand for the top 5 skills in data analyst job postings*
+*Table of the demand for the top 5 skills in data analyst job postings.*
+
+---
 
 ### Salary Boosting Skills
 
@@ -212,25 +225,74 @@ and efficient data pipeline management.
 
 |   Skills     | Avg Salary    |
 |--------------|---------------|
-|   Pyspark    | 20,8172       |
-|   Bitbucket  | 18,9155       |
-|   Couchbase  | 16,0515       |
-|   Watson     | 16,0515       |
-|   Datarobot  | 15,5486       |
-|   Gitlab     | 15,4500       |
-|   Swift      | 15,3750       |
-|   Jupyter    | 15,2777       |
-|   Pandas     | 15,1821       |
-| Elasticseach | 14,5000       |
+|   Pyspark    | $20,8172       |
+|   Bitbucket  | $18,9155       |
+|   Couchbase  | $16,0515       |
+|   Watson     | $16,0515       |
+|   Datarobot  | $15,5486       |
+|   Gitlab     | $15,4500       |
+|   Swift      | $15,3750       |
+|   Jupyter    | $15,2777       |
+|   Pandas     | $15,1821       |
+| Elasticseach | $14,5000       |
 
-*Tables of the average salary for the top 10 paying skills for data analysts*
+*Table of the average salary for the top 10 paying skills for data analysts.*
+
+---
 
 ### Optimal Learning Path 
 ---
 
 _By integrating insights from both demand and salary data, this query seeks to identify high-value skills — those that are not only in demand but also command competitive salaries. The goal is to provide a strategic foundation for skill development and career growth._
 
+```sql
+SELECT
+    skills_dim.skill_id,
+    skills_dim.skills,
+    COUNT(skills_job_dim.job_id) AS demand_count,
+    ROUND(AVG(job_postings_fact.salary_year_avg),0) AS avg_salary
+FROM
+    job_postings_fact
+INNER JOIN skills_job_dim
+    ON  job_postings_fact.job_id = skills_job_dim.job_id
+INNER JOIN skills_dim
+    ON skills_job_dim.skill_id = skills_dim.skill_id
+WHERE
+    job_title_short = 'Data Analyst'
+    AND salary_year_avg IS NOT NULL
+    AND job_work_from_home = TRUE
+GROUP BY
+    skills_dim.skill_id
+HAVING
+    COUNT(skills_job_dim.job_id)  > 10
+ORDER BY
+    avg_salary DESC,
+    demand_count DESC
+LIMIT 25
+
+```
+
+- **High Demand for Big Data & ML Skills:** Python and R remain highly sought-after, with demand counts of 236 and 148, respectively. Despite their popularity, their average salaries—$101,397 for Python and $100,499 for R—suggest that proficiency in these languages is valuable but also widely available. 
+
+- **Cloud Tools and Technologies:** Specialized cloud-based technologies, including Snowflake, Azure, AWS, and BigQuery, exhibit strong demand alongside competitive salaries. This trend underscores the growing importance of cloud platforms and big data technologies in modern data analysis.
+
+- **Business Intelligence & Visualization:** Tableau and Looker play a crucial role in translating data into actionable insights. With demand counts of 230 and 49, respectively, and average salaries of $99,288 and $103,795, their significance in business intelligence and data visualization is evident.
+
+- **Database Technologies:** The persistent demand for expertise in both traditional and NoSQL databases—such as Oracle, SQL Server, and NoSQL—reinforces the need for strong data management skills. Average salaries ranging from $97,786 to $104,534 highlight their continued relevance in the data ecosystem.
 
 
+| Skill ID | Skill       | Demand Count | Average Salary |
+|----------|------------|--------------|---------------|
+| 8        | Go         | 27           | $115,320      |
+| 234      | Confluence | 11           | $114,210      |
+| 97       | Hadoop     | 22           | $113,193      |
+| 80       | Snowflake  | 37           | $112,948      |
+| 74       | Azure      | 34           | $111,225      |
+| 77       | BigQuery   | 13           | $109,654      |
+| 76       | AWS        | 32           | $108,317      |
+| 4        | Java       | 17           | $106,906      |
+| 194      | SSIS       | 12           | $106,683      |
+| 233      | Jira       | 20           | $104,918      |
 
 
+*Table of the most optimal skills for data analyst sorted by salary.*
