@@ -2,7 +2,8 @@
 **Exploring the Data Job Market: Insights into Data Analyst Roles** 
  
 This project provides a comprehensive analysis of the data job market, with a particular focus on data analyst roles. It examines top-paying positions, the most in-demand skills, and the intersection where high demand meets competitive salaries in the field of data analytics.
- Datasets:[Download Here](https://drive.google.com/drive/folders/1moeWYoUtUklJO6NJdWo9OV8zWjRn0rjN)
+ 
+Datasets: [Download Here](https://drive.google.com/drive/folders/1moeWYoUtUklJO6NJdWo9OV8zWjRn0rjN)
 
 # Background 
 
